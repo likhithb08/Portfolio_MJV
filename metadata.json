@@ -1,0 +1,8 @@
+{
+  "name": "Mayur Jadav V | Cinematic Editor Portfolio",
+  "description": "High-performance portfolio for viral short-form video editor Mayur Jadav V (MJ).",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
