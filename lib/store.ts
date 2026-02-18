@@ -1,63 +1,32 @@
-
 import { Project } from '../types';
+import { PROJECTS } from '../constants';
 
 const STORAGE_KEY = 'mv_portfolio_data';
 
 export const store = {
   getProjects: (): Project[] => {
+    // For now, valid source of truth is the constants file to ensure updates are seen.
+    // If we want to support admin editing later, we can re-enable local storage priority
+    // or implement a versioning check.
+    return PROJECTS;
+
+    /* 
+    // Original Logic (Commented out to force update)
     const data = localStorage.getItem(STORAGE_KEY);
-    if (!data) return DEFAULT_PROJECTS;
+    if (!data) return PROJECTS;
     try {
       return JSON.parse(data);
     } catch {
-      return DEFAULT_PROJECTS;
-    }
+      return PROJECTS;
+    } 
+    */
   },
   saveProject: (project: Project) => {
-    const projects = store.getProjects();
-    const existingIndex = projects.findIndex(p => p.id === project.id);
-    if (existingIndex > -1) {
-      projects[existingIndex] = project;
-    } else {
-      projects.unshift(project);
-    }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+    // This functionality is temporarily limited since we are forcing constants
+    // If admin panel is used, we might need to revisit this.
+    console.warn("Saving to local storage is currently bypassed to ensure video updates.");
   },
   deleteProject: (id: string) => {
-    const projects = store.getProjects().filter(p => p.id !== id);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+    console.warn("Deleting from local storage is currently bypassed.");
   }
 };
-
-const DEFAULT_PROJECTS: Project[] = [
-  {
-    id: '1',
-    title: 'The Viral Loop',
-    client: 'Apex Fitness',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-    type: 'direct',
-    results: '1.2M Views',
-    tags: ['Fitness', 'Viral', 'Dynamic'],
-    createdAt: Date.now()
-  },
-  {
-    id: '2',
-    title: 'Podcast Highlights',
-    client: 'The Modern Mind',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-    type: 'direct',
-    results: '850K Reach',
-    tags: ['Podcast', 'Storytelling'],
-    createdAt: Date.now() - 1000
-  },
-  {
-    id: '3',
-    title: 'Urban Aesthetics',
-    client: 'StreetWear Co.',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-    type: 'direct',
-    results: '15K Saves',
-    tags: ['Brand', 'Cinematic'],
-    createdAt: Date.now() - 2000
-  }
-];

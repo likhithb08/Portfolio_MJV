@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Eye, Instagram, Zap, Award, Mail, ChevronRight, Settings } from 'lucide-react';
 import Navbar from './components/Navbar';
-import ProjectGrid from './components/ProjectGrid';
+import VideoCarousel from './components/VideoCarousel';
+// import ProjectGrid from './components/ProjectGrid'; // Kept for reference or future use if needed, but not rendered.
 import AdminPanel from './components/AdminPanel';
 import { store } from './lib/store';
 import { Project } from './types';
@@ -84,8 +85,17 @@ const App: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Main Grid */}
-      <ProjectGrid projects={projects} />
+      {/* Main Carousel - Replaces Grid */}
+      <VideoCarousel 
+        title="Selected Edits." 
+        subtitle="Every second is engineered for retention."
+        videos={projects.map(p => ({
+          id: p.id,
+          title: p.title,
+          src: p.url,
+          poster: p.thumbnail
+        }))} 
+      />
 
       {/* Stats Section */}
       <section className="py-24 bg-white/[0.02] border-y border-white/5">
@@ -112,7 +122,7 @@ const App: React.FC = () => {
          <div className="flex flex-col lg:flex-row gap-20 items-center">
             <div className="lg:w-1/2 relative">
                <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-[3rem] border border-white/10 grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl">
-                  <img src="https://picsum.photos/id/10/800/1000" className="w-full h-full object-cover" alt="Mayur Jadav V" />
+                  <img src="/Images/mayurJadavV.jpeg" className="w-full h-full object-cover" alt="Mayur Jadav V" />
                </div>
                <div className="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/20 blur-[100px] -z-1" />
                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-500/20 blur-[100px] -z-1" />
@@ -149,25 +159,25 @@ const App: React.FC = () => {
          <div className="container mx-auto px-6 text-center">
             <h2 className="text-6xl md:text-9xl font-black font-syne tracking-tighter mb-12">LET'S GO <br/> VIRAL.</h2>
             <div className="flex flex-wrap justify-center gap-8 mb-16">
-               <a href="https://instagram.com/mayurjadav.v" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 glass px-8 py-4 rounded-2xl hover:bg-white/10 transition-colors">
-                  <Instagram className="w-6 h-6" /> @mayurjadav.v
+               <a href="https://www.instagram.com/fit_kannadiga26?igsh=MWtvZndzZXViemJrOA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 glass px-8 py-4 rounded-2xl hover:bg-white/10 transition-colors">
+                  <Instagram className="w-6 h-6" /> @fit_kannadiga26
                </a>
-               <a href="mailto:hello@mayur.com" className="flex items-center gap-3 glass px-8 py-4 rounded-2xl hover:bg-white/10 transition-colors">
+               <a href="mailto:jadavvmayur@gmail.com" className="flex items-center gap-3 glass px-8 py-4 rounded-2xl hover:bg-white/10 transition-colors">
                   <Mail className="w-6 h-6" /> Work with Me
                </a>
             </div>
-            <p className="text-white/20 text-sm font-bold uppercase tracking-[0.5em]">© 2024 MJ PRODUCTIONS • EST IN MOTION</p>
+            <p className="text-white/20 text-sm font-bold uppercase tracking-[0.5em]">© 2025 MJ PRODUCTIONS • EST IN MOTION</p>
          </div>
       </footer>
 
       {/* Admin Toggle */}
-      <button 
+      {/* <button 
         onClick={() => setShowAdmin(true)}
         className="fixed bottom-6 right-6 z-[150] bg-white/5 glass p-4 rounded-full border border-white/10 hover:bg-white/20 transition-all opacity-20 hover:opacity-100"
         aria-label="Admin Settings"
       >
         <Settings className="w-5 h-5" />
-      </button>
+      </button> */}
 
       <AnimatePresence>
         {showAdmin && <AdminPanel onClose={() => setShowAdmin(false)} onUpdate={refreshProjects} />}

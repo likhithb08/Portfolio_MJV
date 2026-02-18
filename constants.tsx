@@ -4,46 +4,35 @@ import { Project, Service, Stat } from './types';
 export const PROJECTS: Project[] = [
   {
     id: '1',
-    title: 'The Urban Pulse',
-    client: 'HyperReal Media',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    title: '100k Challenge',
+    client: 'Personal Brand',
+    url: '/videos/video1.mp4',
     type: 'direct',
     thumbnail: 'https://picsum.photos/id/1/800/600',
-    results: '2.4M Views, 150k Shares',
-    tags: ['Dynamic Reels'],
+    results: 'Viral Hook Strategy',
+    tags: ['Challenge', 'Growth'],
     createdAt: Date.now()
   },
   {
     id: '2',
-    title: 'Minimalist Future',
-    client: 'Aether Tech',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    title: 'Diet Guide',
+    client: 'Fitness Community',
+    url: '/videos/video2.mp4',
     type: 'direct',
     thumbnail: 'https://picsum.photos/id/2/800/600',
-    results: '1.2M Views, 98% Positive Feedback',
-    tags: ['Product Launch'],
+    results: 'Top Lead Magnet',
+    tags: ['Education', 'Fitness'],
     createdAt: Date.now()
   },
   {
     id: '3',
-    title: 'Vibrant Escape',
-    client: 'Nomad Journals',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    title: 'Fitness Journey',
+    client: 'Lifestyle',
+    url: '/videos/video3.mp4',
     type: 'direct',
     thumbnail: 'https://picsum.photos/id/3/800/600',
-    results: '500k Views, Featured on Travel+Leisure',
-    tags: ['Travel Documentary'],
-    createdAt: Date.now()
-  },
-  {
-    id: '4',
-    title: 'Cyber Circuit',
-    client: 'GamerX Global',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-    type: 'direct',
-    thumbnail: 'https://picsum.photos/id/4/800/600',
-    results: '5.8M Views, 12k Event Signups',
-    tags: ['Esports Trailer'],
+    results: 'High Engagement',
+    tags: ['Motivation', 'Lifestyle'],
     createdAt: Date.now()
   }
 ];
@@ -80,6 +69,60 @@ export const STATS: Stat[] = [
   { label: 'Total Views', value: '100', suffix: 'M+' },
   { label: 'Brand Partnerships', value: '50', suffix: '+' },
   { label: 'Avg Engagement', value: '8.4', suffix: '%' }
+];
+
+export const DYNAMIC_VIDEOS = [
+  {
+    id: 'd1',
+    title: 'High Energy Edits',
+    src: '/videos/dynamic/video1.mp4', 
+    poster: 'https://picsum.photos/id/10/400/700'
+  },
+  {
+    id: 'd2',
+    title: 'Visual Effects',
+    src: '/videos/dynamic/video2.mp4',
+    poster: 'https://picsum.photos/id/11/400/700'
+  },
+  {
+    id: 'd3',
+    title: 'Transition Mastery',
+    src: '/videos/dynamic/video3.mp4',
+    poster: 'https://picsum.photos/id/12/400/700'
+  },
+    {
+    id: 'd4',
+    title: 'Sound Design',
+    src: '/videos/dynamic/video4.mp4',
+    poster: 'https://picsum.photos/id/13/400/700'
+  }
+];
+
+export const PODCAST_VIDEOS = [
+  {
+    id: 'p1',
+    title: 'Deep Dive Clips',
+    src: '/videos/podcast/video1.mp4',
+    poster: 'https://picsum.photos/id/20/400/700'
+  },
+  {
+    id: 'p2',
+    title: 'Viral Snippets',
+    src: '/videos/podcast/video2.mp4',
+    poster: 'https://picsum.photos/id/21/400/700'
+  },
+  {
+    id: 'p3',
+    title: 'Interview Highlights',
+    src: '/videos/podcast/video3.mp4',
+    poster: 'https://picsum.photos/id/22/400/700'
+  },
+   {
+    id: 'p4',
+    title: 'Storytelling Moments',
+    src: '/videos/podcast/video4.mp4',
+    poster: 'https://picsum.photos/id/23/400/700'
+  }
 ];
 
 export const CLIENT_LOGOS = [
